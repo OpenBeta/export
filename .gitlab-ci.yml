@@ -1,0 +1,30 @@
+cache:
+  paths:
+    - node_modules/
+
+image: registry.gitlab.com/openbeta/openbeta-nodejs-docker:16.3
+
+variables:
+  GIT_DEPTH: 1
+  DOCKER_DRIVER: overlay2
+
+test:
+  stage: test
+
+  tags:
+  - docker
+
+  before_script:
+  - if [ "$FORCE_CLEAN" == "true" ]; then rm -rf node_modules; fi;
+  - yarn install --no-progress
+
+  script:
+  - yarn test
+
+publish:
+  stage: deploy
+  tags:
+    - docker
+
+  script:
+  - yarn openbeta-export yarn openbeta-export -d examples -o output/test.jsonlines
