@@ -29,3 +29,5 @@ publish:
   script:
   - git clone --branch develop --depth 1 https://github.com/OpenBeta/opentacos-content
   - yarn openbeta-export -d opentacos-content/content/USA/Oregon -o output/or-areas.jsonlines
+  - gzip -9 -c output/or-areas.jsonlines > output/or-areas.jsonlines.$(date +%Y%b%d).gz
+
