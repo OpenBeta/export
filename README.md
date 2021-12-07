@@ -19,6 +19,7 @@ See the [build file](.gitlab-ci.yml) for a real world example.
 
 # Data format
 
+##  Walls
 ```json
 {
     "area_name": "Quirky Combat Wall",
@@ -37,6 +38,13 @@ See the [build file](.gitlab-ci.yml) for a real world example.
 }
 
 ```
+
+View file on [Open-Tacos](https://tacos.openbeta.io/usa/oregon/mt-hood/petes-pile/quirky-combat-wall) or raw markdown on [GitHub](https://github.com/OpenBeta/opentacos-content/blob/develop/content/USA/Oregon/Mt.%20Hood/Petes%20Pile/Quirky%20Combat%20Wall/index.md)
+
+
+## Climbs
+
+TBD
 
 # License
 - Code in this repo: MIT
