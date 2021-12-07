@@ -46,7 +46,6 @@ View file on [Open-Tacos](https://tacos.openbeta.io/usa/oregon/mt-hood/petes-pil
 
 TBD
 
-Open-Tacos
 # License
 - Code in this repo: MIT
 - Data files: CC0
