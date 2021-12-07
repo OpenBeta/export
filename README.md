@@ -15,7 +15,7 @@ yarn install
 # yarn openbeta-export -d <content dir> -o <output_file>
 ```
 
-See the [build file](.gitlab-ci.yml) for an example.
+See the [build file](.gitlab-ci.yml) for a real world example.
 
 # Data format
 
@@ -35,6 +35,7 @@ See the [build file](.gitlab-ci.yml) for an example.
     ],
     "src": "Oregon/Mt. Hood/Petes Pile/Quirky Combat Wall/index.md"
 }
+
 ```
 
 # License
