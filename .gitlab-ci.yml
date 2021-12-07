@@ -1,0 +1,41 @@
+cache:
+  paths:
+    - node_modules/
+
+image: registry.gitlab.com/openbeta/openbeta-nodejs-docker:16.3
+
+variables:
+  GIT_DEPTH: 1
+  DOCKER_DRIVER: overlay2
+
+test:
+  stage: test
+
+  tags:
+  - docker
+
+  before_script:
+  - if [ "$FORCE_CLEAN" == "true" ]; then rm -rf node_modules; fi;
+  - yarn install --no-progress
+
+  script:
+  - yarn test
+
+publish:
+
+  stage: deploy
+  tags:
+    - docker
+  rules:
+  - if: '$CI_COMMIT_BRANCH == "main"'
+  - if: '$CI_PIPELINE_SOURCE == "schedule"'
+
+  script:
+  - git clone --branch develop --depth 1 https://github.com/OpenBeta/opentacos-content
+  - yarn openbeta-export -d opentacos-content/content/USA/Oregon -o output/or-areas.jsonlines
+  - gzip -9 -c output/or-areas.jsonlines > output/or-areas.jsonlines.$(date +%Y%b%d).gz
+
+  artifacts:
+    expire_in: 1 month
+    paths:
+    - output/*.gz
